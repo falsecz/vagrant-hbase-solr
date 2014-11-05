@@ -6,9 +6,8 @@ WIP
 
 
 ```
-bender@book master ~/Develop/sbks/solr λ  vagrant provision
+ λ  vagrant provision
 ==> default: Running provisioner: shell...
-    default: Running: /var/folders/kx/d0ppz94j6flf_kvgr8fv00ym0000gn/T/vagrant-shell20141105-64214-zc03eo.sh
 ==> default: Setting javahome to /usr/lib/jvm/java-7-oracle/
 ==> default: stdin: is not a tty
 ==> default: Screen with namenode already running
