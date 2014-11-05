@@ -1,0 +1,14 @@
+<configuration>
+  <property>
+    <name>hbase.rootdir</name>
+    <value>hdfs://localhost:54310/hbase</value>
+  </property>
+  <!-- <property>
+    <name>hbase.cluster.distributed</name>
+    <value>true</value>
+  </property>
+  <property>
+      <name>hbase.zookeeper.quorum</name>
+      <value>node-a.example.com,node-b.example.com,node-c.example.com</value>
+    </property> -->
+</configuration>

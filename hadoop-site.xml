@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+<configuration>
+<property>
+  <name>hadoop.tmp.dir</name>
+  <value>/tmp/hadoop-${user.name}</value>
+</property>
+<property>
+  <name>fs.default.name</name>
+  <value>hdfs://localhost:54310</value>
+</property>
+<property>
+  <name>mapred.job.tracker</name>
+  <value>hdfs://localhost:54311</value>
+</property>
+<property>
+  <name>dfs.replication</name>
+  <value>8</value>
+</property>
+<property>
+  <name>mapred.child.java.opts</name>
+  <value>-Xmx512m</value>
+</property>
+</configuration>
