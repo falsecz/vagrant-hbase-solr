@@ -5,6 +5,7 @@
   <name>hadoop.tmp.dir</name>
   <value>/tmp/hadoop-${user.name}</value>
 </property>
+
 <property>
   <name>fs.default.name</name>
   <value>hdfs://localhost:54310</value>
