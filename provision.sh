@@ -82,6 +82,8 @@ cp /vagrant_data/hbase-indexer-site.xml hbase-indexer/conf/
 cp /vagrant_data/indexdemo-indexer.xml ./
 
 
+cp hbase-indexer/hbase-indexer-dist/target/hbase-indexer-1.6-SNAPSHOT/hbase-indexer-1.6-SNAPSHOT/lib/hbase-sep-* hbase-$HBASE_VERSION-hadoop2/lib/
+
 
 if [ ! -d "/tmp/hadoop-root/dfs/name" ]; then
 	echo Formating namenode
@@ -148,6 +150,7 @@ runinscreen solr "solr-$SOLR_VERSION/bin/solr -f -c -z 10.11.1.13:2181/solr -f -
 
 
 runinscreen hbaseshell "hbase-$HBASE_VERSION-hadoop2/bin/hbase shell"
+runinscreen zkcli "hbase-$HBASE_VERSION-hadoop2/bin/hbase zkcli"
 runinscreen hbaseindexer "hbase-indexer/bin/hbase-indexer"
 
 
