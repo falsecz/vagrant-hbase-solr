@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<configuration>
+	<property>
+		<name>dfs.name.dir</name>
+		<value>/tmp/nn-dir</value>
+		<description>Comma separated list of paths. Use the list of directories from $DFS_NAME_DIR.
+                For example, /grid/hadoop/hdfs/nn,/grid1/hadoop/hdfs/nn.</description>
+	</property>
+	<property>
+		<name>dfs.data.dir</name>
+		<value>/tmp/data-dir</value>
+		<description>Comma separated list of paths. Use the list of directories from $DFS_DATA_DIR.
+                For example, /grid/hadoop/hdfs/dn,/grid1/hadoop/hdfs/dn.</description>
+	</property>
+	<property>
+		<name>dfs.http.address</name>
+		<value>precise64:50070</value>
+		<description>Enter your NameNode hostname for http access.</description>
+	</property>
+	<!-- <property>
+		<name>dfs.secondary.http.address</name>
+		<value>$secondary.namenode.full.hostname:50090</value>
+		<description>Enter your Secondary NameNode hostname.</description>
+	</property> -->
+	<property>
+		<name>dfs.https.address</name>
+		<value>precise64:50470</value>
+		<description>Enter your NameNode hostname for https access.</description>
+	</property>
+</configuration>

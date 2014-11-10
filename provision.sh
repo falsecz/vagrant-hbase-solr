@@ -75,14 +75,28 @@ fi
 
 ## Configuration
 cp /vagrant_data/hbase-site.xml hbase-$HBASE_VERSION-hadoop2/conf/
-cp /vagrant_data/hadoop-site.xml hadoop-$HADOOP_VERSION/etc/hadoop/
+
+
+
+
+# cp /vagrant_data/hadoop-site.xml hadoop-$HADOOP_VERSION/etc/hadoop/
+cp /vagrant_data/{yarn,core,hdfs}-site.xml hadoop-$HADOOP_VERSION/etc/hadoop/
+
 cp /vagrant_data/.screenrc /home/vagrant/
 cp /vagrant_data/.screenrc /root/
 cp /vagrant_data/hbase-indexer-site.xml hbase-indexer/conf/
 cp /vagrant_data/indexdemo-indexer.xml ./
 
 
-cp hbase-indexer/hbase-indexer-dist/target/hbase-indexer-1.6-SNAPSHOT/hbase-indexer-1.6-SNAPSHOT/lib/hbase-sep-* hbase-$HBASE_VERSION-hadoop2/lib/
+# gethadoopjar ()
+# 	if [ ! -f ./hadoop-$HADOOP_VERSION/share/hadoop/$1 ]; then
+# 		wget $2 -O	./hadoop-$HADOOP_VERSION/share/hadoop/$1
+# 	fi
+#
+# gethadoopjar "mapreduce/hadoop-mapreduce-client-core-2.5.1.jar" "http://central.maven.org/maven2/org/apache/hadoop/hadoop-mapreduce-client-core/2.5.1/hadoop-mapreduce-client-core-2.5.1.jar"
+# gethadoopjar "search-mr-1.0.0-cdh5.0.0.jar" "https://repository.cloudera.com/content/groups/public/com/cloudera/search/search-mr/1.0.0-cdh5.0.0/search-mr-1.0.0-cdh5.0.0.jar"
+#
+# cp hbase-indexer/hbase-indexer-dist/target/hbase-indexer-1.6-SNAPSHOT/hbase-indexer-1.6-SNAPSHOT/lib/hbase-sep-* hbase-$HBASE_VERSION-hadoop2/lib/
 
 
 if [ ! -d "/tmp/hadoop-root/dfs/name" ]; then
@@ -117,20 +131,6 @@ runinscreen() {
 		screen -S $NAME -X stuff "$2"`echo -ne '\015'`
 	fi
 
-	# screen -S mrdka -x -X screen -t baba bash
-
-
-	# if screen -ls | grep $1 > /dev/null; then
-	# 	echo "Screen with $1 already running"
-	# else
-	# 	echo "----> Starting screen with $1"
-	#
-	# 	screen -S test -X  select baba
-	# 	screen -S test -X  stuff 'ls'`echo -ne '\015'`
-	#
-	# 	# screen -S daemons -x -X screen
-	# 	# screen -dmS $1 $2
-	# fi
 }
 
 runinscreen zookeeper "hbase-$HBASE_VERSION-hadoop2/bin/hbase zookeeper start"
@@ -145,37 +145,13 @@ runinscreen hbasemaster "hbase-$HBASE_VERSION-hadoop2/bin/hbase master start"
 runinscreen regionserver "hbase-$HBASE_VERSION-hadoop2/bin/hbase regionserver start"
 
 
-
+# bin/solr -f -c -z 10.11.1.13:2181/solr -a "-Dbootstrap_confdir=./solr/collection1/conf -Dcollection.configName=myconf"
 runinscreen solr "solr-$SOLR_VERSION/bin/solr -f -c -z 10.11.1.13:2181/solr -f -c -z 127.0.0.1:2181/solr"
 
 
 runinscreen hbaseshell "hbase-$HBASE_VERSION-hadoop2/bin/hbase shell"
 runinscreen zkcli "hbase-$HBASE_VERSION-hadoop2/bin/hbase zkcli"
 runinscreen hbaseindexer "hbase-indexer/bin/hbase-indexer"
-
-
-# -a \"-Dbootstrap_confdir=./solr/collection1/conf -Dcollection.configName=myconf\"
-# bin/solr -f -c -z 10.11.1.13:2181/solr -a "-Dbootstrap_confdir=./solr/collection1/conf -Dcollection.configName=myconf"
-#
-# rm -rf ~/.m2/repository/org/sonatype
-# cat > ~/.m2/settings.xml <<DONE
-# <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-#       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-#       xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-#                           http://maven.apache.org/xsd/settings-1.0.0.xsd">
-#   <mirrors>
-#     <mirror>
-#       <id>HTTPSsourceforge</id>
-#       <name>HTTPSsourceforge</name>
-#       <url>https://oss.sonatype.org/content/groups/public/</url>
-#       <mirrorOf>sourceforge</mirrorOf>
-#     </mirror>
-#   </mirrors>
-# </settings>
-# DONE
-#
-#  mvn dependency:copy-dependencies
-
 
 
 echo Done

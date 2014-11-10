@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<configuration>
+	<property>
+		<name>fs.default.name</name>
+		<value>hdfs://precise64:8020</value>
+		<description>Enter your NameNode hostname</description>
+	</property>
+	<!-- <property>
+		<name>fs.checkpoint.dir</name>
+		<value>/grid/hadoop/hdfs/snn,/grid1/hadoop/hdfs/snn,/grid2/hadoop/hdfs/snn</value>
+		<description>A comma separated list of paths. Use the list of directories from $FS_CHECKPOINT_DIR.
+                For example, /grid/hadoop/hdfs/snn,sbr/grid1/hadoop/hdfs/snn,sbr/grid2/hadoop/hdfs/snn </description>
+	</property> -->
+</configuration>

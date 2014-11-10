@@ -29,3 +29,15 @@ WIP
 ==> default:   sudo screen -x solr-vagrant
 ==> default:
 ```
+
+puppet-todo
+-----------
+
+zk
+==
+standalone zookeeper: http://apache.miloslavbrada.cz/zookeeper/zookeeper-3.4.6/zookeeper-3.4.6.tar.gz
+zkCli in path
+
+
+
+
